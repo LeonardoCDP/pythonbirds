@@ -1,6 +1,8 @@
 class Pessoa:
+    olhos = 2 # atributo de classe
+
     def __init__(self, *filhos, nome=None, idade=30):
-        self.idade = idade
+        self.idade = idade # atributo de instancia
         self.nome = nome
         self.filhos = list(filhos)
 
@@ -21,5 +23,12 @@ if __name__ == '__main__':
     carlos.sobrenome = 'Ramalho' # cria atributo dinamico
     print(carlos.sobrenome)
     del carlos.filhos # remove atributo na execução
+    carlos.olhos = 1
+    del carlos.olhos
     print(carlos.__dict__) # atributo especial que mostra lista os atributos de instancia
     print(phelipe.__dict__)
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(carlos.olhos)
+    print(phelipe.olhos)
+    print(id(Pessoa.olhos), id(carlos.olhos), id(phelipe.olhos))
