@@ -9,6 +9,13 @@ class Pessoa:
     def cumprimentar(self):
         return f'Ola Mundo {id(self)}'
 
+    @staticmethod
+    def metodo_estatico():
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f'{cls} - {cls.olhos}'
 
 if __name__ == '__main__':
     phelipe = Pessoa(nome='Phelipe')
@@ -32,3 +39,5 @@ if __name__ == '__main__':
     print(carlos.olhos)
     print(phelipe.olhos)
     print(id(Pessoa.olhos), id(carlos.olhos), id(phelipe.olhos))
+    print(Pessoa.metodo_estatico(), carlos.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(), carlos.nome_e_atributos_de_classe())
