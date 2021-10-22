@@ -18,3 +18,8 @@ if __name__ == '__main__':
     print(phelipe.idade)
     for filho in carlos.filhos:
         print(filho.nome)
+    carlos.sobrenome = 'Ramalho' # cria atributo dinamico
+    print(carlos.sobrenome)
+    del carlos.filhos # remove atributo na execução
+    print(carlos.__dict__) # atributo especial que mostra lista os atributos de instancia
+    print(phelipe.__dict__)
