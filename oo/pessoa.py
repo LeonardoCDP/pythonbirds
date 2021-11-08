@@ -1,13 +1,13 @@
 class Pessoa:
-    olhos = 2 # atributo de classe
+    olhos = 2  # atributo de classe
 
     def __init__(self, *filhos, nome=None, idade=30):
-        self.idade = idade # atributo de instancia
+        self.idade = idade  # atributo de instancia
         self.nome = nome
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Ola Mundo {id(self)}'
+        return f'Ola meu nome é {self.nome}'
 
     @staticmethod
     def metodo_estatico():
@@ -17,11 +17,19 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):
         return f'{cls} - {cls.olhos}'
 
+
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        cumprimentar_da_classe = super().cumprimentar()
+        return f'{cumprimentar_da_classe}. Aperto de mão'
+
+
+class Mutante(Pessoa):
+    olhos = 3
+
 
 if __name__ == '__main__':
-    phelipe = Homem(nome='Phelipe')
+    phelipe = Mutante(nome='Phelipe')
     carlos = Homem(phelipe, nome='Carlos')
     print(Pessoa.cumprimentar(phelipe))
     print(id(phelipe))
@@ -30,14 +38,14 @@ if __name__ == '__main__':
     print(phelipe.idade)
     for filho in carlos.filhos:
         print(filho.nome)
-    carlos.sobrenome = 'Ramalho' # cria atributo dinamico
+    carlos.sobrenome = 'Ramalho'  # cria atributo dinamico
     print(carlos.sobrenome)
-    del carlos.filhos # remove atributo na execução
+    del carlos.filhos  # remove atributo na execução
     carlos.olhos = 1
     del carlos.olhos
-    print(carlos.__dict__) # atributo especial que mostra lista os atributos de instancia
+    print(carlos.__dict__)  # atributo especial que mostra lista os atributos de instancia
     print(phelipe.__dict__)
-    Pessoa.olhos = 3
+    Pessoa.olhos = 2
     print(Pessoa.olhos)
     print(carlos.olhos)
     print(phelipe.olhos)
@@ -49,3 +57,6 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(phelipe, Pessoa))
     print(isinstance(phelipe, Homem))
+    print(phelipe.olhos)
+    print(phelipe.cumprimentar())
+    print(carlos.cumprimentar())
